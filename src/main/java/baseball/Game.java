@@ -2,7 +2,7 @@ package baseball;
 
 public class Game {
 
-    GameStatus status = new GameStatus();
+    private final GameStatus status = new GameStatus();
 
     public Game(int[] answer, int[] userAnswer) {
         compareAnswerToUserAnswer(answer, userAnswer);
@@ -18,16 +18,24 @@ public class Game {
 
     private void checkMatch(int computer, int user, int i, int j) {
         if (user == computer) {
-            if (i == j) {
-                status.strike();
-            } else {
-                status.ball();
-            }
+            checkBallOrStrike(i, j);
         }
+    }
+
+    private void checkBallOrStrike(int i, int j) {
+        if (i == j) {
+            status.strike();
+            return;
+        }
+        status.ball();
     }
 
     public String gameResult() {
         return this.status.toString();
+    }
+
+    public boolean win() {
+        return status.strikeStatus() == 3;
     }
 
 }
