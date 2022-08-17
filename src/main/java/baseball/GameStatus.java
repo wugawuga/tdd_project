@@ -38,4 +38,9 @@ public class GameStatus {
         }
         return countOfStrike + "스트라이크";
     }
+
+    public int strikeStatus() {
+        return countOfStrike;
+    }
+
 }
