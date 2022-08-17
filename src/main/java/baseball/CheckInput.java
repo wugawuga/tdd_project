@@ -24,12 +24,12 @@ public class CheckInput {
 
     public int convertPlayerAnswerToInteger(String playerAnswer) {
         if (playerAnswer.length() != NUMBEROFANSWER) {
-            throw new IllegalArgumentException(NUMBEROFANSWER + "자리를 숫자를 입력하세요");
+            throw new IllegalArgumentException(NUMBEROFANSWER + "자리 숫자를 입력하세요");
         }
         try {
             return Integer.parseInt(playerAnswer);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NUMBEROFANSWER + "자리를 숫자를 입력하세요");
+            throw new IllegalArgumentException(NUMBEROFANSWER + "자리 숫자를 입력하세요");
         }
     }
 
