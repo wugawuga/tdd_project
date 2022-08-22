@@ -38,4 +38,15 @@ public class Game {
         return status.strikeStatus() == 3;
     }
 
+    public boolean againGame(Player player, Printer printer) {
+        String goStop = player.writeAnswer();
+        if (goStop.equals("1")) {
+            return true;
+        }
+        if (goStop.equals("2")) {
+            printer.end();
+            return false;
+        }
+        return false;
+    }
 }

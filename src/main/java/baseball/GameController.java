@@ -23,19 +23,8 @@ public class GameController {
             printer.printResult(playGame.gameResult());
             if (playGame.win()) {
                 printer.restartEnd();
-                againGame();
+                flag = playGame.againGame(player, printer);
             }
-        }
-    }
-
-    private void againGame() {
-        String goStop = player.writeAnswer();
-        if (goStop.equals("1")) {
-            start();
-        }
-        if (goStop.equals("2")) {
-            printer.end();
-            flag = false;
         }
     }
 
