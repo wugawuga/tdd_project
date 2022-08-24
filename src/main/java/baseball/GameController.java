@@ -8,18 +8,16 @@ public class GameController {
     private final Computer computer = new Computer(); // 컴퓨터 클래스 -> 정답 생성
 
     public void start() {
-        int[] answer = computer.makeAnswer();
-        playGameByUser(answer);
+        playGameByUser(computer.makeAnswer());
     }
 
     private void playGameByUser(int[] answer) {
         while (flag) {
             printer.inputAnswer();
-            String playerAnswer = player.writeAnswer();
 
-            CheckInput check = new CheckInput(playerAnswer); // 체크인풋 클래스 -> 유저입력 체크
-            int[] playerAnswerToArray = check.finishCheck(); // 유저 정답 -> 배열
-            Game playGame = new Game(answer, playerAnswerToArray);
+            CheckInput check = new CheckInput(player.writeAnswer()); // 체크인풋 클래스 -> 유저입력 체크
+
+            Game playGame = new Game(answer, check.finishCheck());
             printer.printResult(playGame.gameResult());
             if (playGame.win()) {
                 printer.restartEnd();
