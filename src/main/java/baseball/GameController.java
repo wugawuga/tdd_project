@@ -5,10 +5,9 @@ public class GameController {
     private boolean flag = true;
     private final Player player = new Player(); // 유저 클래스 -> 정답 입력
     private final Printer printer = new Printer();
-    private final Computer computer = new Computer(); // 컴퓨터 클래스 -> 정답 생성
 
     public void start() {
-        playGameByUser(computer.makeAnswer());
+        playGameByUser(Computer.makeAnswer());
     }
 
     private void playGameByUser(int[] answer) {

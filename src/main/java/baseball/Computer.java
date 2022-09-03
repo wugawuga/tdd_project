@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer {
 
-    public int[] makeAnswer() {
+    static public int[] makeAnswer() {
 
         int[] answer = new int[3];
         boolean[] usedCheck = new boolean[10];
