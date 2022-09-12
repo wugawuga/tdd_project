@@ -5,6 +5,7 @@ import java.util.List;
 
 import baseballLecture.domain.Judgment;
 import baseballLecture.domain.NumberGenerator;
+import baseballLecture.domain.Referee;
 
 /**
  * 객체 지향 프로그래밍
@@ -15,15 +16,19 @@ import baseballLecture.domain.NumberGenerator;
 
 public class Application {
 	public static void main(String[] args) {
-		final NumberGenerator generator = new NumberGenerator();
-		final List<Integer> numbers = generator.createRandomNumbers();
-		System.out.println(numbers);
+		// final NumberGenerator generator = new NumberGenerator();
+		// final List<Integer> numbers = generator.createRandomNumbers();
+		// System.out.println(numbers);
+		//
+		// Judgment judgment = new Judgment();
+		// final int count = judgment.correctCount(Arrays.asList(7, 4, 5), Arrays.asList(1, 2, 3));
+		// System.out.println(count);
+		//
+		// final boolean place = judgment.hasPlace(Arrays.asList(7, 8, 9), 1, 7);
+		// System.out.println(place);
 
-		Judgment judgment = new Judgment();
-		final int count = judgment.correctCount(Arrays.asList(7, 4, 5), Arrays.asList(1, 2, 3));
-		System.out.println(count);
-
-		final boolean place = judgment.hasPlace(Arrays.asList(7, 8, 9), 1, 7);
-		System.out.println(place);
+		final Referee referee = new Referee();
+		final String result = referee.compare(Arrays.asList(3, 1, 2), Arrays.asList(1, 2, 3));
+		System.out.println(result);
 	}
 }
