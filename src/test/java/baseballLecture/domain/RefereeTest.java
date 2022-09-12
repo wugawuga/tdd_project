@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class RefereeTest {
 	private Referee referee;
@@ -15,6 +17,13 @@ class RefereeTest {
 	@BeforeEach
 	void setUp() {
 		referee = new Referee();
+	}
+
+	@ParameterizedTest
+	@CsvSource({"1,2,3,0 볼 3 스트라이크", "4,5,6,낫싱", "3,1,2,3 볼 0 스트라이크", "1,3,2,2 볼 1 스트라이크"})
+	public void compare(int number1, int number2, int number3, String expected) {
+		String actual = referee.compare(ANSWER, Arrays.asList(number1, number2, number3));
+		assertThat(actual).isEqualTo(expected);
 	}
 
 	@Test
