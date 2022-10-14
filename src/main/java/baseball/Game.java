@@ -10,9 +10,13 @@ public class Game {
 
     private void compareAnswerToUserAnswer(int[] answer, int[] userAnswer) {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                checkMatch(answer[i], userAnswer[j], i, j);
-            }
+            checkMatching(answer, userAnswer, i);
+        }
+    }
+
+    private void checkMatching(int[] answer, int[] userAnswer, int index) {
+        for (int j = 0; j < 3; j++) {
+            checkMatch(answer[index], userAnswer[j], index, j);
         }
     }
 
