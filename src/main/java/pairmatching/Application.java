@@ -10,28 +10,24 @@ import java.util.stream.Collectors;
 public class Application {
 	public static void main(String[] args) {
 		//TODO: 구현 진행
-		try {
-			InputStream inputStream1 = Application.class
-				.getClassLoader()
-				.getResource("backend-crew.md")
-				.openStream();
-			BufferedReader br1 = new BufferedReader(new InputStreamReader(inputStream1));
-			List<String> backendCrew = br1.lines().collect(Collectors.toList());
-			System.out.println("backendCrew = " + backendCrew);
-		} catch (Exception e) {
-			System.out.println("파일 이름을 확인해주세요");
-		}
+		List<String> backendCrew = crewList("backend-crew.md");
+		System.out.println(backendCrew);
+		List<String> frontendCrew = crewList("frontend-crew.md");
+		System.out.println(frontendCrew);
+	}
 
+	private static List<String> crewList(String fileName) {
 		try {
 			InputStream inputStream1 = Application.class
 				.getClassLoader()
-				.getResource("backend-crew.md")
+				.getResource(fileName)
 				.openStream();
 			BufferedReader br1 = new BufferedReader(new InputStreamReader(inputStream1));
-			List<String> backendCrew = br1.lines().collect(Collectors.toList());
-			System.out.println("backendCrew = " + backendCrew);
+			List<String> crewList = br1.lines().collect(Collectors.toList());
+			return crewList;
 		} catch (Exception e) {
-			System.out.println("파일 이름을 확인해주세요");
+			System.out.println("파일 이름(" + fileName + ")을 확인해주세요");
+			return null;
 		}
 	}
 }
