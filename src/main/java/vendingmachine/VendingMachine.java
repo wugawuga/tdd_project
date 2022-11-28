@@ -1,5 +1,7 @@
 package vendingmachine;
 
+import java.util.ArrayList;
+import java.util.List;
 import vendingmachine.ui.InputView;
 import vendingmachine.ui.OutputView;
 
@@ -16,15 +18,17 @@ public class VendingMachine {
     public void on() {
         makeRandomChanges();
         outputView.changesOfMachine(pocket);
-        fillBeverage();
+        List<Beverage> beverages = fillBeverage();
     }
 
-    private void fillBeverage() {
+    private List<Beverage> fillBeverage() {
         outputView.fillBeverage();
         String[] beverages = inputView.beverages();
+        List<Beverage> list = new ArrayList<>();
         for (String beverage : beverages) {
-            System.out.println("beverage = " + beverage);
+            list.add(new Beverage(beverage.split(",")));
         }
+        return list;
     }
 
     private void makeRandomChanges() {
