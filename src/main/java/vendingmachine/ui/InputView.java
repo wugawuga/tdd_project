@@ -9,6 +9,19 @@ public class InputView {
         return changeInt(input);
     }
 
+    public String[] beverages() {
+        String input = input();
+        checkSeparator(input);
+        input = input.replaceAll("[\\[\\]]", "");
+        return input.split(";");
+    }
+
+    private void checkSeparator(String input) {
+        if (!input.contains(";")) {
+            throw new IllegalArgumentException("[ERROR] 구분자 ';' 를 넣어주세요");
+        }
+    }
+
     private int changeInt(String input) {
         try {
             return Integer.parseInt(input);

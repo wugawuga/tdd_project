@@ -14,6 +14,20 @@ public class VendingMachine {
     }
 
     public void on() {
+        makeRandomChanges();
+        outputView.changesOfMachine(pocket);
+        fillBeverage();
+    }
+
+    private void fillBeverage() {
+        outputView.fillBeverage();
+        String[] beverages = inputView.beverages();
+        for (String beverage : beverages) {
+            System.out.println("beverage = " + beverage);
+        }
+    }
+
+    private void makeRandomChanges() {
         outputView.howMuchHasMoney();
         int moneyOfMachine = inputView.inputMoney();
         pocket = new CoinPocket(moneyOfMachine);
