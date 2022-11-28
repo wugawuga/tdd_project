@@ -30,4 +30,8 @@ public enum Coin {
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
+
+    public int getAmount() {
+        return this.amount;
+    }
 }

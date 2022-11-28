@@ -13,6 +13,10 @@ public class CoinPocket {
         makeRandomChanges(money);
     }
 
+    public Map<Coin, Integer> getPocket() {
+        return pocket;
+    }
+
     private void initMachine() {
         pocket.put(Coin.COIN_500, 0);
         pocket.put(Coin.COIN_100, 0);
