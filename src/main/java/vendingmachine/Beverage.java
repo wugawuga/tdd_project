@@ -13,6 +13,19 @@ public class Beverage {
         this.amount = Integer.parseInt(beverageInfo[2]);
     }
 
+    public boolean isName(String beverageName) {
+        return name.equals(beverageName);
+    }
+
+    public int order(int inputMoney) {
+        amount = amount - 1;
+        return inputMoney - price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     private void validateAmount(String amount) {
         if (Integer.parseInt(amount) < 1) {
             throw new IllegalArgumentException("[ERROR] 재고는 1미만일 수 없어요");

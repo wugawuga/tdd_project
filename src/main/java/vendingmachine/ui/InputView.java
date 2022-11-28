@@ -16,6 +16,10 @@ public class InputView {
         return input.split(";");
     }
 
+    public String beverageName() {
+        return input();
+    }
+
     private void checkSeparator(String input) {
         if (!input.contains(";")) {
             throw new IllegalArgumentException("[ERROR] 구분자 ';' 를 넣어주세요");

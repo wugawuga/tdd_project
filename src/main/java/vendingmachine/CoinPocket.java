@@ -3,6 +3,7 @@ package vendingmachine;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class CoinPocket {
     private final Map<Coin, Integer> pocket = new LinkedHashMap<>();
@@ -40,5 +41,21 @@ public class CoinPocket {
             pocket.put(coin, pocket.get(coin) + 1);
             money -= randomAmount;
         }
+    }
+
+    public Map<Coin, Integer> makeChanges(int changes) {
+        Map<Coin, Integer> changeResult = new LinkedHashMap<>();
+        for (Map.Entry<Coin, Integer> coinIntegerEntry : pocket.entrySet()) {
+            Coin key = coinIntegerEntry.getKey();
+            if (key.getAmount() > changes) {
+                continue;
+            }
+            Integer value = coinIntegerEntry.getValue();
+            for (int i = 0; i < value; i++) {
+                changeResult.put(key, changeResult.getOrDefault(key, 0) + 1);
+                changes -= key.getAmount();
+            }
+        }
+        return changeResult;
     }
 }
