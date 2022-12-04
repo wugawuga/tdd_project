@@ -51,6 +51,11 @@ public class PairMatchingController {
         output.chooseMatchingCondition();
         String[] conditions = input.matchingCondition();
         PairResult result = results.findResult(conditions[0], conditions[1], conditions[2]);
+        while (result == null) {
+            output.nonExist();
+            conditions = input.matchingCondition();
+            result = results.findResult(conditions[0], conditions[1], conditions[2]);
+        }
         output.matchingResult(result);
     }
 
@@ -64,6 +69,7 @@ public class PairMatchingController {
             if (branchOffRematchCommand(command)) {
                 PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
                 results.add(pairResult);
+                results.remove(findResult);
                 output.matchingResult(pairResult);
                 return;
             }

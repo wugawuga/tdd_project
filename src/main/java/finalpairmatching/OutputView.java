@@ -59,4 +59,10 @@ public class OutputView {
         System.out.println("매칭 정보가 있습니다. 다시 매칭하시겠습니까?");
         System.out.println("네 | 아니오");
     }
+
+    public void nonExist() {
+        System.out.println("조회 결과가 없습니다");
+        System.out.println("다시 입력해 주세요");
+        chooseMatchingCondition();
+    }
 }

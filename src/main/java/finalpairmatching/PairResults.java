@@ -20,4 +20,9 @@ public class PairResults {
         }
         return null;
     }
+
+    public void remove(PairResult findResult) {
+        results.remove(findResult);
+        System.out.println("results = " + results);
+    }
 }
