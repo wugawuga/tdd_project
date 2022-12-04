@@ -1,4 +1,4 @@
-package finalpairmatching;
+package finalpairmatching.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 

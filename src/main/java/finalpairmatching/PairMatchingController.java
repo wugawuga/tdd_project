@@ -1,7 +1,10 @@
 package finalpairmatching;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import finalpairmatching.domain.PairResult;
+import finalpairmatching.domain.PairResults;
+import finalpairmatching.ui.InputView;
+import finalpairmatching.ui.OutputView;
 import java.util.List;
 import java.util.Map;
 

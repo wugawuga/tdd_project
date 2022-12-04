@@ -1,5 +1,6 @@
-package finalpairmatching;
+package finalpairmatching.ui;
 
+import finalpairmatching.domain.PairResult;
 import java.util.List;
 
 public class OutputView {
