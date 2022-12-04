@@ -36,10 +36,10 @@ public class PairMatchingController {
             select();
             return;
         }
-//        if (command.equals("3")) {
-//            init();
-//            return;
-//        }
+        if (command.equals("3")) {
+            init();
+            return;
+        }
         if (command.equals("Q")) {
             quit();
             return;
@@ -47,14 +47,18 @@ public class PairMatchingController {
         throw new IllegalArgumentException("[ERROR] 1,2,3,Q 중에 입력해 주세요");
     }
 
+    private void init() {
+        output.reset();
+        results.reset();
+    }
+
     private void select() {
         output.chooseMatchingCondition();
         String[] conditions = input.matchingCondition();
         PairResult result = results.findResult(conditions[0], conditions[1], conditions[2]);
-        while (result == null) {
+        if (result == null) {
             output.nonExist();
-            conditions = input.matchingCondition();
-            result = results.findResult(conditions[0], conditions[1], conditions[2]);
+            return;
         }
         output.matchingResult(result);
     }
