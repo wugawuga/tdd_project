@@ -13,12 +13,18 @@ public class Application {
     private static final List<String> fileNames = Arrays.asList("backend-crew.md", "frontend-crew.md");
 
     public static void main(String[] args) {
+        PairMatchingController controller = new PairMatchingController(makeCrewList());
+        controller.start();
+    }
+
+    private static Map<String, List<String>> makeCrewList() {
         Map<String, List<String>> map = new HashMap<>();
         for (String fileName : fileNames) {
             String branch = divergeFileName(fileName);
             List<String> crews = readFile(fileName);
             map.put(branch, crews);
         }
+        return map;
     }
 
     private static List<String> readFile(String fileName) {
