@@ -10,7 +10,7 @@ public class PairMatchingController {
     private static final String FRONT_BRANCH = "front";
     private final OutputView output = new OutputView();
     private final InputView input = new InputView();
-    private List<PairResult> results = new ArrayList<>();
+    private PairResults results = new PairResults();
     private final List<String> frontend;
     private final List<String> backend;
     private boolean programFlag = true;
@@ -32,10 +32,10 @@ public class PairMatchingController {
             matching();
             return;
         }
-//        if (command.equals("2")) {
-//            select();
-//            return;
-//        }
+        if (command.equals("2")) {
+            select();
+            return;
+        }
 //        if (command.equals("3")) {
 //            init();
 //            return;
@@ -47,12 +47,40 @@ public class PairMatchingController {
         throw new IllegalArgumentException("[ERROR] 1,2,3,Q 중에 입력해 주세요");
     }
 
+    private void select() {
+        output.chooseMatchingCondition();
+        String[] conditions = input.matchingCondition();
+        PairResult result = results.findResult(conditions[0], conditions[1], conditions[2]);
+        output.matchingResult(result);
+    }
+
     private void matching() {
         output.chooseMatchingCondition();
         String[] conditions = input.matchingCondition();
-        PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
-        results.add(pairResult);
-        output.matchingResult(pairResult);
+        PairResult findResult = results.findResult(conditions[0], conditions[1], conditions[2]);
+        if (findResult != null) {
+            output.existResult();
+            String command = input.rematchCommand();
+            if (branchOffRematchCommand(command)) {
+                PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
+                results.add(pairResult);
+                output.matchingResult(pairResult);
+                return;
+            }
+            output.matchingResult(findResult);
+        }
+        if (findResult == null) {
+            PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
+            results.add(pairResult);
+            output.matchingResult(pairResult);
+        }
+    }
+
+    private boolean branchOffRematchCommand(String command) {
+        if (!command.equals("네") && !command.equals("아니오")) {
+            throw new IllegalArgumentException("[ERROR] 재매칭 결과는 네 또는 아니오만 입력 가능해요");
+        }
+        return command.equals("네");
     }
 
     private PairResult makeShuffle(String course, String level, String mission) {

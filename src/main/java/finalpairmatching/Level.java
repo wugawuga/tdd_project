@@ -21,4 +21,8 @@ public enum Level {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 레벨을 확인해주세요"));
     }
+
+    public boolean checkLevel(String level) {
+        return name.equals(level);
+    }
 }

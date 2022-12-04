@@ -18,4 +18,11 @@ public class PairResult {
     public List<String> printShuffle() {
         return shuffleCrews;
     }
+
+    public PairResult find(String course, String level, String mission) {
+        if (this.course.checkCourse(course) && this.level.checkLevel(level) && this.mission.equals(mission)) {
+            return this;
+        }
+        return null;
+    }
 }

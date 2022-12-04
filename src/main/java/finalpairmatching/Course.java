@@ -18,4 +18,8 @@ public enum Course {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 백엔드, 프론트엔드만 가능해요"));
     }
+
+    public boolean checkCourse(String course) {
+        return name.equals(course);
+    }
 }
