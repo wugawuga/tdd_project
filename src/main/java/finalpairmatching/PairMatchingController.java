@@ -58,7 +58,7 @@ public class PairMatchingController {
     private void select() {
         output.chooseMatchingCondition();
         String[] conditions = input.matchingCondition();
-        PairResult result = results.findResult(conditions[0], conditions[1], conditions[2]);
+        PairResult result = results.findResult(conditions);
         if (result == null) {
             output.nonExist();
             return;
@@ -69,12 +69,12 @@ public class PairMatchingController {
     private void matching() {
         output.chooseMatchingCondition();
         String[] conditions = input.matchingCondition();
-        PairResult findResult = results.findResult(conditions[0], conditions[1], conditions[2]);
+        PairResult findResult = results.findResult(conditions);
         if (findResult != null) {
             output.existResult();
             String command = input.rematchCommand();
             if (branchOffRematchCommand(command)) {
-                PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
+                PairResult pairResult = makeShuffle(conditions);
                 results.add(pairResult);
                 results.remove(findResult);
                 output.matchingResult(pairResult);
@@ -83,7 +83,7 @@ public class PairMatchingController {
             output.matchingResult(findResult);
         }
         if (findResult == null) {
-            PairResult pairResult = makeShuffle(conditions[0], conditions[1], conditions[2]);
+            PairResult pairResult = makeShuffle(conditions);
             results.add(pairResult);
             output.matchingResult(pairResult);
         }
@@ -96,11 +96,11 @@ public class PairMatchingController {
         return command.equals("네");
     }
 
-    private PairResult makeShuffle(String course, String level, String mission) {
-        if (course.equals("백엔드")) {
-            return new PairResult(course, level, mission, Randoms.shuffle(backend));
+    private PairResult makeShuffle(String[] conditions) {
+        if (conditions[0].equals("백엔드")) {
+            return new PairResult(conditions, Randoms.shuffle(backend));
         }
-        return new PairResult(course, level, mission, Randoms.shuffle(frontend));
+        return new PairResult(conditions, Randoms.shuffle(frontend));
     }
 
     private void quit() {

@@ -10,10 +10,13 @@ public class PairResults {
         results.add(result);
     }
 
-    public PairResult findResult(String course, String level, String mission) {
+    public PairResult findResult(String[] conditions) {
         PairResult result;
         for (PairResult pairResult : results) {
-            result = pairResult.find(course, level, mission);
+            if (conditions[1].equals("레벨3") || conditions[1].equals("레벨5")) {
+                return pairResult.findThreeOrFiveLevel(conditions);
+            }
+            result = pairResult.find(conditions);
             if (result != null) {
                 return result;
             }
