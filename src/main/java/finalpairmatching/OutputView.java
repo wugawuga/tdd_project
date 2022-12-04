@@ -62,7 +62,12 @@ public class OutputView {
 
     public void nonExist() {
         System.out.println("조회 결과가 없습니다");
-        System.out.println("다시 입력해 주세요");
-        chooseMatchingCondition();
+        System.out.println();
+    }
+
+    public void reset() {
+        System.out.println();
+        System.out.println("초기화 되었습니다.");
+        System.out.println();
     }
 }

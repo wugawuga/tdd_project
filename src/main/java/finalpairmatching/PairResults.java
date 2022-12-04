@@ -23,6 +23,9 @@ public class PairResults {
 
     public void remove(PairResult findResult) {
         results.remove(findResult);
-        System.out.println("results = " + results);
+    }
+
+    public void reset() {
+        results = new ArrayList<>();
     }
 }
