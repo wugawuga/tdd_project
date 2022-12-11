@@ -45,13 +45,17 @@ public class PairController {
             OutputView.choiceCourseLevelMission();
             String[] choice = InputView.choice();
             for (Crews pair : pairs) {
-                if (pair.findCrews(choice)) {
-                    OutputView.printResult(pair);
-                }
+                findPrintResult(choice, pair);
             }
             return;
         }
         OutputView.notExistPair();
+    }
+
+    private static void findPrintResult(String[] choice, Crews pair) {
+        if (pair.findCrews(choice)) {
+            OutputView.printResult(pair);
+        }
     }
 
     private void match() {
