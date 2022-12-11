@@ -1,4 +1,4 @@
-package finalpairmatching;
+package repairmatching;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,12 +13,15 @@ public class Application {
     private static final List<String> fileNames = Arrays.asList("backend-crew.md", "frontend-crew.md");
 
     public static void main(String[] args) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> front_back_crews = new HashMap<>();
         for (String fileName : fileNames) {
             String branch = divergeFileName(fileName);
             List<String> crews = readFile(fileName);
-            map.put(branch, crews);
+            front_back_crews.put(branch, crews);
         }
+
+        PairController controller = new PairController(front_back_crews);
+        controller.start();
     }
 
     private static List<String> readFile(String fileName) {
@@ -32,10 +35,10 @@ public class Application {
 
     private static String divergeFileName(String fileName) {
         if (fileName.contains("backend-crew")) {
-            return "back";
+            return "백엔드";
         }
         if (fileName.contains("frontend-crew")) {
-            return "front";
+            return "프론트엔드";
         }
         throw new IllegalArgumentException("[ERROR] 파일이름은 'backend-crew', 'frontend-crew' 만 가능해요");
     }
