@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public static void choiceCourseLevelMission() {
-        System.out.println("#############################################\n"
+        System.out.println("\n#############################################\n"
                 + "과정: 백엔드 | 프론트엔드\n"
                 + "미션:\n"
                 + "  - 레벨1: 자동차경주 | 로또 | 숫자야구게임\n"
@@ -33,5 +33,9 @@ public class OutputView {
     public static void printResult(Crews crews) {
         System.out.println("\n페어 매칭 결과입니다.");
         System.out.println(crews.print());
+    }
+
+    public static void notExistPair() {
+        System.out.println("페어 매칭 결과가 없습니다.\n");
     }
 }

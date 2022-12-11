@@ -8,7 +8,7 @@ import repairmatching.ui.InputView;
 import repairmatching.ui.OutputView;
 
 public class PairController {
-    private Map<String, List<String>> crews;
+    private final Map<String, List<String>> crews;
     private List<Crews> pairs = new ArrayList<>();
 
     public PairController(Map<String, List<String>> crews) {
@@ -28,6 +28,30 @@ public class PairController {
         if (command.equals("1")) {
             match();
         }
+        if (command.equals("2")) {
+            select();
+        }
+        if (command.equals("3")) {
+            init();
+        }
+    }
+
+    private void init() {
+        pairs = new ArrayList<>();
+    }
+
+    private void select() {
+        if (!pairs.isEmpty()) {
+            OutputView.choiceCourseLevelMission();
+            String[] choice = InputView.choice();
+            for (Crews pair : pairs) {
+                if (pair.findCrews(choice)) {
+                    OutputView.printResult(pair);
+                }
+            }
+            return;
+        }
+        OutputView.notExistPair();
     }
 
     private void match() {
