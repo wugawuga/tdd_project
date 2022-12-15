@@ -35,4 +35,11 @@ public class Section {
         }
         return 0;
     }
+
+    public int findDistance(Object o, Object o1) {
+        if (firstStation.isEqualToName((String) o) && secondStation.isEqualToName((String) o1)) {
+            return distance;
+        }
+        return 0;
+    }
 }
